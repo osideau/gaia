@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Gaia Mental Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .12s; }
+.reveal-d2 { transition-delay: .24s; }
+.reveal-d3 { transition-delay: .36s; }
+
+/* Resource grid */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--line);
+}
+.resource-card {
+  padding: 36px 30px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background .3s;
+}
+.resource-card:hover { background: var(--warm); }
+.resource-card:nth-child(3n) { border-right: none; }
+.resource-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  width: 100%;
+}
+.resource-card h3 {
+  font-family: var(--serif);
+  font-size: 21px;
+  color: var(--green);
+  margin-bottom: 10px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+.resource-card p { font-size: 13.5px; color: var(--muted); margin-bottom: 18px; }
+.resource-link {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--green);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+/* Crisis box */
+.crisis-box {
+  background: var(--green);
+  color: #fff;
+  padding: 48px;
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.crisis-box h2 {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 300;
+  line-height: 1.2;
+}
+.crisis-box h2 em { font-style: italic; }
+.crisis-lines { display: grid; gap: 12px; }
+.crisis-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  font-size: 14px;
+}
+.crisis-line strong { font-weight: 500; }
+.crisis-line a { color: var(--gold); font-weight: 500; letter-spacing: 1px; }
+
+/* Practices grid */
+.practices-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.practice-card {
+  padding: 36px 32px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.practice-num {
+  font-family: var(--serif);
+  font-size: 44px;
+  color: var(--line);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.practice-card h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+.practice-card p { font-size: 14px; color: var(--muted); line-height: 1.72; }
+
+@media (max-width: 900px) {
+  .resource-grid { grid-template-columns: 1fr 1fr; }
+  .resource-card:nth-child(3n) { border-right: 1px solid var(--line); }
+  .resource-card:nth-child(2n) { border-right: none; }
+  .crisis-box { grid-template-columns: 1fr; gap: 28px; }
+  .practices-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .resource-grid { grid-template-columns: 1fr; }
+  .resource-card { border-right: none; }
+  .crisis-box { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#173525" stroke-width="1.2">
+          <circle cx="20" cy="20" r="10"/>
+          <path d="M20 10C20 10 16 15 16 20C16 25 20 28 20 28"/>
+          <path d="M20 10C20 10 24 15 24 20C24 25 20 28 20 28"/>
+          <path d="M10.5 16H29.5M10.5 24H29.5"/>
+        </svg>
+      </div>
+      <div class="logo-text"><strong>GAIA</strong><span>— Mental Health —</span></div>
+    </a>
+    <nav class="menu">
+      <a href="about.html">About</a>
+      <a href="therapy.html">Therapy</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#experiences">Experiences</a>
+      <a href="resources.html" class="active">Resources</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="contact.html">Book a Session</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Resources</span>
+    <h1>Tools for your<br><em>healing journey.</em></h1>
+    <p>A curated collection of practices, readings, and supports — for between sessions, for difficult days, and for the work you do outside of therapy.</p>
+  </div>
+</section>
+
+<!-- Resource Cards -->
+<section class="content-section alt">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">Self-Guided</span>
+      <h2>Practices &amp; <em>tools</em> to explore.</h2>
+    </div>
+    <div class="resource-grid">
+
+      <div class="resource-card reveal">
+        <div class="resource-tag">Grounding</div>
+        <h3>The 5-4-3-2-1 Technique</h3>
+        <p>A simple sensory grounding practice to help regulate your nervous system during moments of overwhelm or anxiety.</p>
+        <a class="resource-link" href="#">Read More →</a>
+      </div>
+
+      <div class="resource-card reveal reveal-d1">
+        <div class="resource-tag">Breathing</div>
+        <h3>Box Breathing for Calm</h3>
+        <p>A four-part breathing rhythm used by first responders and therapists alike. Learn to activate your rest-and-digest system.</p>
+        <a class="resource-link" href="#">Read More →</a>
+      </div>
+
+      <div class="resource-card reveal reveal-d2">
+        <div class="resource-tag">Nature</div>
+        <h3>Shinrin-Yoku: Forest Bathing</h3>
+        <p>The Japanese practice of being present in nature. Learn how to bring mindful attention to outdoor environments near you.</p>
+        <a class="resource-link" href="#">Read More →</a>
+      </div>
+
+      <div class="resource-card reveal">
+        <div class="resource-tag">Body</div>
+        <h3>Progressive Muscle Relaxation</h3>
+        <p>A body-based technique that uses deliberate tension and release to create deep physical and emotional relaxation.</p>
+        <a class="resource-link" href="#">Read More →</a>
+      </div>
+
+      <div class="resource-card reveal reveal-d1">
+        <div class="resource-tag">Journaling</div>
+        <h3>Therapeutic Writing Prompts</h3>
+        <p>Twelve prompts to help you process emotions, explore patterns, and move through what feels stuck — one page at a time.</p>
+        <a class="resource-link" href="#">Read More →</a>
+      </div>
+
+      <div class="resource-card reveal reveal-d2">
+        <div class="resource-tag">Sleep</div>
+        <h3>A Wind-Down Ritual for Rest</h3>
+        <p>A step-by-step evening routine designed for those struggling with anxious thoughts at night and disrupted sleep.</p>
+        <a class="resource-link" href="#">Read More →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Practices -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">Somatic Practices</span>
+      <h2>Working with your <em>body.</em></h2>
+      <p>These practices can be done anywhere — on a walk, in your car, or at your desk. They are designed to help you return to a sense of safety in your own body.</p>
+    </div>
+    <div class="practices-grid">
+      <div class="practice-card reveal">
+        <div class="practice-num">01</div>
+        <h3>Orienting</h3>
+        <p>Slowly look around the room you're in. Notice five things you can see. Let your eyes rest on each one briefly. This simple act signals to your nervous system that you are safe and present — it interrupts the stress response and anchors you in the here and now.</p>
+      </div>
+      <div class="practice-card reveal reveal-d1">
+        <div class="practice-num">02</div>
+        <h3>Grounded Feet</h3>
+        <p>Place both feet flat on the floor. Feel the weight of your legs, the pressure through your soles. Press gently downward and notice the earth pushing back. This simple contact with the ground can interrupt a spiral and return you to the present moment.</p>
+      </div>
+      <div class="practice-card reveal">
+        <div class="practice-num">03</div>
+        <h3>Sigh of Relief</h3>
+        <p>Take a deep breath in through the nose — then add one more small sip of air at the top. Release slowly through the mouth. This "double inhale" fully expands the lungs and activates the parasympathetic nervous system more powerfully than a standard deep breath.</p>
+      </div>
+      <div class="practice-card reveal reveal-d1">
+        <div class="practice-num">04</div>
+        <h3>Safe Place Visualization</h3>
+        <p>Close your eyes and bring to mind a place — real or imagined — where you feel completely safe and at ease. Notice what you see, hear, smell, and feel there. Spend two to three minutes in this place whenever you need to resource yourself between sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Crisis resources -->
+<section class="content-section alt">
+  <div class="container reveal">
+    <div class="crisis-box">
+      <div>
+        <span class="eyebrow" style="color:var(--gold)">If You're in Crisis</span>
+        <h2>You don't have to<br>face this <em>alone.</em></h2>
+        <p style="color:rgba(255,255,255,.65);font-size:15px;margin-top:14px">These lines are available 24 hours a day, 7 days a week. Please reach out — your life matters.</p>
+      </div>
+      <div class="crisis-lines">
+        <div class="crisis-line">
+          <span><strong>Crisis Services Canada</strong><br><small style="opacity:.6">Call or Text</small></span>
+          <a href="tel:18334564566">1-833-456-4566</a>
+        </div>
+        <div class="crisis-line">
+          <span><strong>Distress Centres of Greater Toronto</strong></span>
+          <a href="tel:4163408888">416-340-8888</a>
+        </div>
+        <div class="crisis-line">
+          <span><strong>Kids Help Phone</strong><br><small style="opacity:.6">Text HOME to 686868</small></span>
+          <a href="tel:18006686868">1-800-668-6868</a>
+        </div>
+        <div class="crisis-line">
+          <span><strong>Trans Lifeline</strong></span>
+          <a href="tel:18775658860">1-877-565-8860</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Ready to go deeper<br>with <em>professional support?</em></h2>
+    <a class="btn outline" href="contact.html">Book a Consultation</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          <div class="logo-mark">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#173525" stroke-width="1.2">
+              <circle cx="20" cy="20" r="10"/>
+              <path d="M20 10C20 10 16 15 16 20C16 25 20 28 20 28"/>
+              <path d="M20 10C20 10 24 15 24 20C24 25 20 28 20 28"/>
+              <path d="M10.5 16H29.5M10.5 24H29.5"/>
+            </svg>
+          </div>
+          <div class="logo-text"><strong>GAIA</strong><span>— Mental Health —</span></div>
+        </a>
+        <p>Outdoor therapy in Ontario, inspired by nature, grounded in evidence, and rooted in relationship.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="therapy.html">Therapy Services</a>
+          <a href="index.html#approach">Our Approach</a>
+          <a href="resources.html">Resources</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Contact</h4>
+        <p>Ontario, Canada</p>
+        <p>hello@gaiahealth.ca</p>
+        <p>(647) 000-0000</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Along</h4>
+        <div class="social">
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Facebook">fb</a>
+          <a href="#" aria-label="Email">✉</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Gaia Mental Health. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>

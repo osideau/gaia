@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Therapy Services — Gaia Mental Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .12s; }
+.reveal-d2 { transition-delay: .24s; }
+.reveal-d3 { transition-delay: .36s; }
+
+/* Service rows */
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--line);
+}
+.service-row:last-child { border-bottom: none; }
+.service-row.flipped .service-img { order: 2; }
+.service-row.flipped .service-body { order: 1; }
+.service-img {
+  min-height: 420px;
+  background-size: cover;
+  background-position: center;
+}
+.service-body {
+  padding: 60px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--paper);
+}
+.service-body h2 {
+  font-size: clamp(28px, 3vw, 40px);
+  color: var(--green);
+  margin-bottom: 16px;
+  line-height: 1.12;
+}
+.service-body h2 em { font-style: italic; }
+.service-body p { color: var(--muted); margin-bottom: 16px; max-width: 480px; }
+.tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 28px; }
+.tag {
+  padding: 5px 14px;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Pricing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--line);
+  margin-top: 48px;
+}
+.pricing-card {
+  padding: 40px 32px;
+  border-right: 1px solid var(--line);
+  position: relative;
+}
+.pricing-card:last-child { border-right: none; }
+.pricing-card.featured {
+  background: var(--green);
+  color: #fff;
+}
+.pricing-card.featured .eyebrow { color: var(--gold); }
+.pricing-card.featured p { color: rgba(255,255,255,.7); }
+.pricing-card h3 {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.pricing-card.featured h3 { color: #fff; }
+.price {
+  font-family: var(--serif);
+  font-size: 48px;
+  color: var(--green);
+  line-height: 1;
+  margin: 16px 0 4px;
+}
+.pricing-card.featured .price { color: #fff; }
+.price-note { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+.pricing-card.featured .price-note { color: rgba(255,255,255,.5); }
+.pricing-list { list-style: none; margin-bottom: 32px; }
+.pricing-list li {
+  font-size: 13.5px;
+  color: var(--muted);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 10px;
+}
+.pricing-card.featured .pricing-list li { color: rgba(255,255,255,.75); border-color: rgba(255,255,255,.1); }
+.pricing-list li::before { content: '—'; color: var(--gold); }
+.btn-pricing {
+  display: inline-block;
+  padding: 13px 28px;
+  border: 1px solid var(--green);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--green);
+  transition: background .3s, color .3s;
+}
+.btn-pricing:hover { background: var(--green); color: #fff; }
+.pricing-card.featured .btn-pricing { border-color: rgba(255,255,255,.5); color: #fff; }
+.pricing-card.featured .btn-pricing:hover { background: rgba(255,255,255,.1); }
+
+/* FAQ */
+.faq-list { max-width: 760px; margin: 48px auto 0; }
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 22px 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--green);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.faq-question span { font-family: var(--sans); font-size: 20px; color: var(--gold); flex-shrink: 0; transition: transform .3s; }
+.faq-question.open span { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s var(--ease);
+}
+.faq-answer p {
+  font-size: 15px;
+  color: var(--muted);
+  padding-bottom: 22px;
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .service-row { grid-template-columns: 1fr; }
+  .service-row.flipped .service-img { order: 0; }
+  .service-row.flipped .service-body { order: 0; }
+  .service-img { min-height: 280px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card { border-right: none; border-bottom: 1px solid var(--line); }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#173525" stroke-width="1.2">
+          <circle cx="20" cy="20" r="10"/>
+          <path d="M20 10C20 10 16 15 16 20C16 25 20 28 20 28"/>
+          <path d="M20 10C20 10 24 15 24 20C24 25 20 28 20 28"/>
+          <path d="M10.5 16H29.5M10.5 24H29.5"/>
+        </svg>
+      </div>
+      <div class="logo-text"><strong>GAIA</strong><span>— Mental Health —</span></div>
+    </a>
+    <nav class="menu">
+      <a href="about.html">About</a>
+      <a href="therapy.html" class="active">Therapy</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#experiences">Experiences</a>
+      <a href="resources.html">Resources</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="contact.html">Book a Session</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Therapy Services</span>
+    <h1>Where healing<br>meets the <em>outdoors.</em></h1>
+    <p>We offer individual, group, and nature-based therapy experiences across Ontario. Each modality is tailored to your needs, your pace, and your story.</p>
+  </div>
+</section>
+
+<!-- Service Rows -->
+<div>
+
+  <div class="service-row reveal">
+    <div class="service-img" style="background-image: url('hike_talk.jpg')"></div>
+    <div class="service-body">
+      <span class="eyebrow">Individual Therapy</span>
+      <h2>Hike &amp; Talk<br><em>Therapy</em></h2>
+      <p>Walk alongside your therapist in a natural setting — trails, parks, or waterside paths. Movement and nature work together to reduce anxiety, open up conversation, and help you process what matters most.</p>
+      <p>Research shows walking side-by-side reduces the intensity of eye contact, making it easier to speak about difficult topics. Nature adds a regulatory quality that static indoor settings can't replicate.</p>
+      <div class="tag-row">
+        <span class="tag">Anxiety</span>
+        <span class="tag">Depression</span>
+        <span class="tag">Stress</span>
+        <span class="tag">Burnout</span>
+        <span class="tag">Life Transitions</span>
+      </div>
+      <a class="btn ghost" href="contact.html">Inquire</a>
+    </div>
+  </div>
+
+  <div class="service-row flipped reveal">
+    <div class="service-img" style="background-image: url('canoe_therapy.jpg')"></div>
+    <div class="service-body">
+      <span class="eyebrow">Experiential Therapy</span>
+      <h2>Canoe<br><em>Therapy</em></h2>
+      <p>Experience therapy on the water. The rhythmic motion of paddling, the sound of water, and the open sky create a deeply regulating environment — ideal for clients dealing with trauma, dissociation, or emotional dysregulation.</p>
+      <p>Canoe therapy is offered in a contained, supervised setting. No prior paddling experience is required.</p>
+      <div class="tag-row">
+        <span class="tag">Trauma</span>
+        <span class="tag">PTSD</span>
+        <span class="tag">Nervous System</span>
+        <span class="tag">Regulation</span>
+      </div>
+      <a class="btn ghost" href="contact.html">Inquire</a>
+    </div>
+  </div>
+
+  <div class="service-row reveal">
+    <div class="service-img" style="background-image: url('reflection_growth.jpg')"></div>
+    <div class="service-body">
+      <span class="eyebrow">Individual Therapy</span>
+      <h2>Reflection &amp;<br><em>Growth Sessions</em></h2>
+      <p>Sit together in nature — a quiet clearing, a bench by the water, a sheltered outdoor space — and move through deeper therapeutic work at your own pace. These sessions blend traditional talk therapy with the grounding quality of outdoor presence.</p>
+      <p>Available for clients who want the benefits of nature without the physical demands of walking or paddling.</p>
+      <div class="tag-row">
+        <span class="tag">Grief</span>
+        <span class="tag">Identity</span>
+        <span class="tag">Relationships</span>
+        <span class="tag">Self-worth</span>
+      </div>
+      <a class="btn ghost" href="contact.html">Inquire</a>
+    </div>
+  </div>
+
+  <div class="service-row flipped reveal">
+    <div class="service-img" style="background-image: url('group_experiences.jpg')"></div>
+    <div class="service-body">
+      <span class="eyebrow">Group Therapy</span>
+      <h2>Group<br><em>Experiences</em></h2>
+      <p>Heal in community. Our group experiences bring together small cohorts of 6–8 people in carefully facilitated outdoor settings. Groups are themed around specific experiences: grief, burnout recovery, anxiety, and seasonal well-being.</p>
+      <p>Group therapy offers something individual therapy cannot — the experience of being truly witnessed by others who understand.</p>
+      <div class="tag-row">
+        <span class="tag">Community</span>
+        <span class="tag">Shared Healing</span>
+        <span class="tag">Grief Groups</span>
+        <span class="tag">Burnout</span>
+      </div>
+      <a class="btn ghost" href="contact.html">Inquire</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Pricing -->
+<section class="content-section alt">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">Investment</span>
+      <h2>Transparent <em>pricing.</em></h2>
+      <p>We believe in making therapy as accessible as possible. Sliding scale options are available for those with financial constraints — please ask during your consultation.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <span class="eyebrow">Individual</span>
+        <h3>Walk &amp; Talk</h3>
+        <div class="price">$165</div>
+        <div class="price-note">per 50-min session</div>
+        <ul class="pricing-list">
+          <li>Hike &amp; Talk or Reflection session</li>
+          <li>Registered Psychotherapist</li>
+          <li>Trauma-informed approach</li>
+          <li>Session notes provided</li>
+        </ul>
+        <a class="btn-pricing" href="contact.html">Book Now</a>
+      </div>
+      <div class="pricing-card featured reveal reveal-d1">
+        <span class="eyebrow">Experiential</span>
+        <h3>Canoe Therapy</h3>
+        <div class="price">$195</div>
+        <div class="price-note">per 75-min session</div>
+        <ul class="pricing-list">
+          <li>On-water therapeutic experience</li>
+          <li>All equipment provided</li>
+          <li>No experience required</li>
+          <li>Somatic &amp; trauma-informed</li>
+        </ul>
+        <a class="btn-pricing" href="contact.html">Book Now</a>
+      </div>
+      <div class="pricing-card reveal reveal-d2">
+        <span class="eyebrow">Group</span>
+        <h3>Group Experience</h3>
+        <div class="price">$85</div>
+        <div class="price-note">per person, per session</div>
+        <ul class="pricing-list">
+          <li>6–8 participants per group</li>
+          <li>8-week cohorts available</li>
+          <li>Themed group programs</li>
+          <li>Facilitated by licensed therapist</li>
+        </ul>
+        <a class="btn-pricing" href="contact.html">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Things people <em>often ask.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">Do I need to be physically fit for outdoor therapy? <span>+</span></button>
+        <div class="faq-answer"><p>Not at all. Outdoor sessions are adapted to your physical abilities. We choose accessible locations and can arrange seated, low-mobility-friendly settings on request. The goal is to be in nature — not to achieve a fitness milestone.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What happens if the weather is bad? <span>+</span></button>
+        <div class="faq-answer"><p>Light rain doesn't stop us! We believe all weather has therapeutic value. However, in cases of severe weather (thunderstorms, extreme cold), we'll move the session to a sheltered outdoor space or reschedule. You'll always be notified in advance.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Is outdoor therapy covered by insurance? <span>+</span></button>
+        <div class="faq-answer"><p>Yes — all sessions are delivered by Registered Psychotherapists and can be claimed under most extended health benefit plans that cover psychotherapy. We provide receipts after each session. Check with your provider for specific coverage details.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What should I bring to a session? <span>+</span></button>
+        <div class="faq-answer"><p>Comfortable clothing appropriate for the season, walking shoes, and a water bottle. We take care of the rest. For canoe therapy, all equipment is provided and you'll receive a brief safety orientation beforehand.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How do I know which service is right for me? <span>+</span></button>
+        <div class="faq-answer"><p>We offer a free 20-minute consultation call to discuss your needs, goals, and any concerns. From there, we'll recommend the best-fit service and therapist. You're never locked in — we adjust as your needs evolve.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Not sure where to start?<br><em>A conversation costs nothing.</em></h2>
+    <a class="btn outline" href="contact.html">Free 20-Min Consultation</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          <div class="logo-mark">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#173525" stroke-width="1.2">
+              <circle cx="20" cy="20" r="10"/>
+              <path d="M20 10C20 10 16 15 16 20C16 25 20 28 20 28"/>
+              <path d="M20 10C20 10 24 15 24 20C24 25 20 28 20 28"/>
+              <path d="M10.5 16H29.5M10.5 24H29.5"/>
+            </svg>
+          </div>
+          <div class="logo-text"><strong>GAIA</strong><span>— Mental Health —</span></div>
+        </a>
+        <p>Outdoor therapy in Ontario, inspired by nature, grounded in evidence, and rooted in relationship.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="therapy.html">Therapy Services</a>
+          <a href="index.html#approach">Our Approach</a>
+          <a href="resources.html">Resources</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Contact</h4>
+        <p>Ontario, Canada</p>
+        <p>hello@gaiahealth.ca</p>
+        <p>(647) 000-0000</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Along</h4>
+        <div class="social">
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Facebook">fb</a>
+          <a href="#" aria-label="Email">✉</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Gaia Mental Health. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-question').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.style.maxHeight = null;
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+</script>
+</body>
+</html>

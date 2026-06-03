@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Gaia Mental Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .12s; }
+.reveal-d2 { transition-delay: .24s; }
+.reveal-d3 { transition-delay: .36s; }
+
+/* Blog layout */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Featured post */
+.post-featured {
+  margin-bottom: 56px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 56px;
+}
+.post-featured img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  margin-bottom: 28px;
+}
+.post-meta {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.post-cat {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gold);
+}
+.post-date { font-size: 12px; color: var(--muted); }
+.post-featured h2 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  color: var(--green);
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+.post-featured h2 em { font-style: italic; }
+.post-featured p { color: var(--muted); margin-bottom: 22px; max-width: 620px; }
+
+/* Post list */
+.post-list { display: grid; gap: 40px; }
+.post-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+}
+.post-card:last-child { border-bottom: none; padding-bottom: 0; }
+.post-card img { width: 100%; height: 130px; object-fit: cover; }
+.post-card h3 {
+  font-size: 20px;
+  color: var(--green);
+  margin: 10px 0 8px;
+  line-height: 1.2;
+}
+.post-card h3 em { font-style: italic; }
+.post-card p { font-size: 13.5px; color: var(--muted); margin-bottom: 12px; }
+.read-more {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--green);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+/* Sidebar */
+.sidebar { position: sticky; top: 120px; }
+.sidebar-widget {
+  padding: 28px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.sidebar-widget h4 {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag-pill {
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.tag-pill:hover { border-color: var(--green); color: var(--green); }
+.sidebar-post {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.sidebar-post:last-child { border-bottom: none; padding-bottom: 0; }
+.sidebar-post img { width: 60px; height: 60px; object-fit: cover; }
+.sidebar-post h5 {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--green);
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.sidebar-post span { font-size: 11px; color: var(--muted); }
+
+/* Newsletter */
+.newsletter-form { display: grid; gap: 10px; margin-top: 16px; }
+.newsletter-form input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+  outline: none;
+}
+.newsletter-form input:focus { border-color: var(--green); }
+.newsletter-form input::placeholder { color: var(--muted); }
+
+@media (max-width: 1000px) {
+  .blog-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+}
+@media (max-width: 600px) {
+  .post-card { grid-template-columns: 1fr; }
+  .post-card img { height: 200px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#173525" stroke-width="1.2">
+          <circle cx="20" cy="20" r="10"/>
+          <path d="M20 10C20 10 16 15 16 20C16 25 20 28 20 28"/>
+          <path d="M20 10C20 10 24 15 24 20C24 25 20 28 20 28"/>
+          <path d="M10.5 16H29.5M10.5 24H29.5"/>
+        </svg>
+      </div>
+      <div class="logo-text"><strong>GAIA</strong><span>— Mental Health —</span></div>
+    </a>
+    <nav class="menu">
+      <a href="about.html">About</a>
+      <a href="therapy.html">Therapy</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#experiences">Experiences</a>
+      <a href="resources.html">Resources</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="contact.html">Book a Session</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Writings &amp; Reflections</span>
+    <h1>Thoughts on <em>healing,</em><br>nature &amp; the mind.</h1>
+    <p>Perspectives from our therapists on outdoor therapy, mental health, and the practices that support well-being.</p>
+  </div>
+</section>
+
+<!-- Blog content -->
+<section class="content-section">
+  <div class="container">
+    <div class="blog-layout">
+
+      <!-- Main column -->
+      <main>
+
+        <!-- Featured -->
+        <article class="post-featured reveal">
+          <img src="hero_canoe.jpg" alt="Canoe therapy on calm water">
+          <div class="post-meta">
+            <span class="post-cat">Nature Therapy</span>
+            <span class="post-date">May 12, 2025</span>
+          </div>
+          <h2>Why Being Near Water<br><em>Changes Everything</em></h2>
+          <p>There is something that happens at the water's edge that is difficult to name but impossible to ignore. A kind of settling. The body softens, the breath slows, and the mind — for perhaps the first time all day — stops rehearsing the future or replaying the past. This is not coincidence. It is biology.</p>
+          <a class="read-more" href="#">Read Article →</a>
+        </article>
+
+        <!-- Post list -->
+        <div class="post-list">
+
+          <article class="post-card reveal">
+            <img src="hike_talk.jpg" alt="Walking in nature">
+            <div>
+              <div class="post-meta">
+                <span class="post-cat">Walk & Talk</span>
+                <span class="post-date">Apr 28, 2025</span>
+              </div>
+              <h3>The Science of Walking<br><em>Side-by-Side</em></h3>
+              <p>Why moving together — rather than sitting face-to-face — can make it easier to speak about what matters most.</p>
+              <a class="read-more" href="#">Read Article →</a>
+            </div>
+          </article>
+
+          <article class="post-card reveal reveal-d1">
+            <img src="shoreline_tree.jpg" alt="Shoreline tree">
+            <div>
+              <div class="post-meta">
+                <span class="post-cat">Somatic</span>
+                <span class="post-date">Apr 8, 2025</span>
+              </div>
+              <h3>Your Nervous System<br><em>Knows the Way</em></h3>
+              <p>Understanding the window of tolerance and why it matters for healing from anxiety, trauma, and chronic stress.</p>
+              <a class="read-more" href="#">Read Article →</a>
+            </div>
+          </article>
+
+          <article class="post-card reveal reveal-d2">
+            <img src="reflection_growth.jpg" alt="Reflection in nature">
+            <div>
+              <div class="post-meta">
+                <span class="post-cat">Grief</span>
+                <span class="post-date">Mar 21, 2025</span>
+              </div>
+              <h3>Grief Doesn't Have<br><em>a Timeline</em></h3>
+              <p>A gentle reflection on what the research and clinical experience actually tell us about grief — and what it doesn't tell us.</p>
+              <a class="read-more" href="#">Read Article →</a>
+            </div>
+          </article>
+
+          <article class="post-card reveal">
+            <img src="group_experiences.jpg" alt="Group in nature">
+            <div>
+              <div class="post-meta">
+                <span class="post-cat">Community</span>
+                <span class="post-date">Mar 3, 2025</span>
+              </div>
+              <h3>What Group Therapy<br><em>Can Offer That 1:1 Cannot</em></h3>
+              <p>The unique healing power of being witnessed by peers who understand — and why community is a clinical intervention.</p>
+              <a class="read-more" href="#">Read Article →</a>
+            </div>
+          </article>
+
+        </div>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="sidebar reveal">
+
+        <div class="sidebar-widget">
+          <h4>Stay Connected</h4>
+          <p style="font-size:13.5px;color:var(--muted);margin-bottom:4px">New articles, practices, and reflections — delivered gently to your inbox.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <a class="btn" href="#" style="text-align:center">Subscribe</a>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4>Topics</h4>
+          <div class="tag-cloud">
+            <span class="tag-pill">Nature</span>
+            <span class="tag-pill">Anxiety</span>
+            <span class="tag-pill">Trauma</span>
+            <span class="tag-pill">Grief</span>
+            <span class="tag-pill">Somatic</span>
+            <span class="tag-pill">Relationships</span>
+            <span class="tag-pill">Walk & Talk</span>
+            <span class="tag-pill">Burnout</span>
+            <span class="tag-pill">Sleep</span>
+            <span class="tag-pill">Groups</span>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4>Recent Posts</h4>
+          <div class="sidebar-post">
+            <img src="canoe_therapy.jpg" alt="">
+            <div>
+              <h5>The Rhythm of Water in Therapy</h5>
+              <span>May 2025</span>
+            </div>
+          </div>
+          <div class="sidebar-post">
+            <img src="hike_talk.jpg" alt="">
+            <div>
+              <h5>Walking Side-by-Side</h5>
+              <span>April 2025</span>
+            </div>
+          </div>
+          <div class="sidebar-post">
+            <img src="reflection_growth.jpg" alt="">
+            <div>
+              <h5>Grief Has No Timeline</h5>
+              <span>March 2025</span>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Words are a beginning.<br><em>Therapy is the next step.</em></h2>
+    <a class="btn outline" href="contact.html">Book a Session</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          <div class="logo-mark">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#173525" stroke-width="1.2">
+              <circle cx="20" cy="20" r="10"/>
+              <path d="M20 10C20 10 16 15 16 20C16 25 20 28 20 28"/>
+              <path d="M20 10C20 10 24 15 24 20C24 25 20 28 20 28"/>
+              <path d="M10.5 16H29.5M10.5 24H29.5"/>
+            </svg>
+          </div>
+          <div class="logo-text"><strong>GAIA</strong><span>— Mental Health —</span></div>
+        </a>
+        <p>Outdoor therapy in Ontario, inspired by nature, grounded in evidence, and rooted in relationship.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="therapy.html">Therapy Services</a>
+          <a href="index.html#approach">Our Approach</a>
+          <a href="resources.html">Resources</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Contact</h4>
+        <p>Ontario, Canada</p>
+        <p>hello@gaiahealth.ca</p>
+        <p>(647) 000-0000</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Along</h4>
+        <div class="social">
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Facebook">fb</a>
+          <a href="#" aria-label="Email">✉</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Gaia Mental Health. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>

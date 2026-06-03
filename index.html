@@ -3,21 +3,301 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gaia Mental Health</title>
+<title>Gaia Mental Health — Nature-Based Therapy in Ontario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-:root{--green:#173525;--cream:#f7f2e9;--warm:#eee5d8;--ink:#182c22;--muted:#5b625b;--line:#d7cdbc}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1.08;margin:0}p{margin:0}.container{width:min(1120px,90%);margin:auto}.header{height:104px;background:#fbf8f0;display:flex;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(0,0,0,.05)}.nav{display:flex;align-items:center;justify-content:space-between;gap:28px}.logo{display:flex;align-items:center;gap:14px}.logo-mark{width:72px;height:72px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;font-size:34px}.logo-text strong{display:block;font-family:Georgia,serif;font-size:38px;font-weight:400;letter-spacing:12px}.logo-text span{display:block;font-size:12px;letter-spacing:3px;margin-top:-6px}.menu{display:flex;gap:28px;align-items:center;font-size:12px;letter-spacing:1.3px;text-transform:uppercase}.menu a,a{text-decoration:none;color:inherit}.btn{display:inline-block;background:var(--green);color:#fff;padding:14px 26px;border:1px solid var(--green);text-transform:uppercase;letter-spacing:1.7px;font-size:12px}.hero{min-height:520px;background:linear-gradient(90deg,rgba(247,242,233,.95) 0%,rgba(247,242,233,.68) 34%,rgba(247,242,233,.08) 60%),url('hero_canoe.jpg') center/cover no-repeat;display:flex;align-items:center}.hero h1{font-size:56px;color:var(--green);max-width:440px}.hero p{font-size:17px;max-width:360px;margin-bottom:28px}.rule{width:64px;height:1px;background:var(--green);margin:30px 0}.kicker{text-align:center;text-transform:uppercase;font-size:14px;letter-spacing:6px;font-weight:700;color:var(--green);margin-bottom:34px}.pillars{padding:36px 0 42px;background:#fbf7ef}.pillar-grid{display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid var(--line)}.pillar{text-align:center;padding:0 25px;border-right:1px solid var(--line)}.icon{width:82px;height:82px;border:2px solid var(--green);border-radius:50%;margin:0 auto 20px;display:grid;place-items:center;font-size:32px}.pillar h3,.card h3,.approach-card h3{font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:2.6px;font-size:14px}.pillar p{font-size:14px;color:#38433c}.split{display:grid;grid-template-columns:1fr 1fr;background:#f0e8dc}.split-img{min-height:380px;background:url('shoreline_tree.jpg') center/cover no-repeat}.split-content{padding:70px 10%;position:relative}.eyebrow{text-transform:uppercase;font-size:13px;letter-spacing:4px;font-weight:700;margin-bottom:20px}.split h2{font-size:40px;color:var(--green);margin-bottom:24px}.split p{max-width:440px;margin-bottom:28px}.approach{padding:75px 0;background:#fbf7ef}.section-title{text-align:center;margin-bottom:40px}.section-title h2{font-size:42px;color:var(--green);margin-bottom:12px}.section-title p{max-width:720px;margin:auto;color:var(--muted)}.approach-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}.approach-card{background:#f3ede2;border:1px solid var(--line);padding:28px 22px;min-height:250px}.approach-card strong{display:block;font-size:14px;margin:10px 0 14px;color:var(--green)}.approach-card p{font-size:14px;color:#465048}.experiences{padding:36px 0 70px;background:#fbf7ef}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:34px}.card img{width:100%;height:170px;object-fit:cover;border-radius:4px}.card h3{margin:20px 0 8px}.card p{font-size:14px;color:#3e4740;min-height:44px}.card a{display:inline-block;margin-top:18px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700}.cta{background:var(--green);color:#fff;padding:38px 0}.cta .container{display:flex;justify-content:space-between;align-items:center;gap:30px}.cta h2{font-size:34px}.btn.outline{background:transparent;border-color:#fff;color:#fff}.footer{background:#f5f0e7;padding:45px 0}.footer-grid{display:grid;grid-template-columns:1.2fr 1.4fr 1fr 1fr;gap:40px}.footer p,.footer a{font-size:13px;color:#334036}.footer-links{display:grid;gap:7px;text-transform:uppercase;letter-spacing:1px}.social{display:flex;gap:12px;margin-top:14px}.social span{width:34px;height:34px;border:1px solid var(--green);border-radius:50%;display:grid;place-items:center}
-@media(max-width:900px){.header{height:auto;padding:18px 0;position:relative}.nav{flex-direction:column;align-items:flex-start}.menu{flex-wrap:wrap;gap:15px}.hero{min-height:560px;background-position:center right}.hero h1{font-size:43px}.pillar-grid,.approach-grid,.cards,.footer-grid{grid-template-columns:1fr}.pillar-grid{border-left:0;gap:32px}.pillar{border-right:0;border-bottom:1px solid var(--line);padding-bottom:28px}.split{grid-template-columns:1fr}.cta .container{flex-direction:column;align-items:flex-start}}
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+.reveal-d5 { transition-delay: .5s; }
 </style>
 </head>
 <body>
-<header class="header"><div class="container nav"><a class="logo" href="#"><div class="logo-mark">♧</div><div class="logo-text"><strong>GAIA</strong><span>— MENTAL HEALTH —</span></div></a><nav class="menu"><a href="#about">About</a><a href="#therapy">Therapy</a><a href="#approach">Approach</a><a href="#experiences">Experiences</a><a href="#resources">Resources</a><a href="#blog">Blog</a><a href="#contact">Contact</a><a class="btn" href="#contact">Book a Session</a></nav></div></header>
-<section class="hero"><div class="container"><h1>Therapy rooted<br>in nature and<br>connection.</h1><div class="rule"></div><p>Outdoor therapy for meaningful change and lasting well-being.</p><a class="btn" href="#contact">Book a Session</a></div></section>
-<section class="pillars"><div class="container"><div class="kicker">Nature. Connection. Change.</div><div class="pillar-grid"><div class="pillar"><div class="icon">♧</div><h3>Rooted in Nature</h3><p>Therapy connected to the calming power of the outdoors.</p></div><div class="pillar"><div class="icon">◎</div><h3>Somatic Support</h3><p>Reconnect with your body, emotions, and nervous system.</p></div><div class="pillar"><div class="icon">≋</div><h3>Walk & Talk Therapy</h3><p>Move, breathe, reflect, and heal in natural spaces.</p></div><div class="pillar"><div class="icon">◉</div><h3>Lasting Growth</h3><p>Build resilience, clarity, and healthier ways to cope.</p></div><div class="pillar"><div class="icon">△</div><h3>Human Approach</h3><p>A supportive space where you can feel heard and understood.</p></div></div></div></section>
-<section class="split" id="about"><div class="split-img"></div><div class="split-content"><div class="eyebrow">Our Approach</div><h2>Evidence-informed.<br>Nature-inspired.<br>Person-centered.</h2><p>Gaia Mental Health approaches psychotherapy through a relational, trauma-informed, somatic, cognitive, and nature-based lens.</p><a class="btn" style="background:transparent;color:var(--green)" href="#approach">Learn More About Our Approach</a></div></section>
-<section class="approach" id="approach"><div class="container"><div class="section-title"><div class="eyebrow">The Approach</div><h2>Support for the whole person.</h2><p>Therapy is grounded in the understanding that healing involves more than changing thoughts — it also involves restoring safety, regulation, connection, embodiment, and relationship.</p></div><div class="approach-grid"><div class="approach-card"><h3>Somatic</h3><strong>Body-based and nervous system-focused therapy</strong><p>Supporting grounding, embodiment, nervous system regulation, and awareness of the connection between mind and body.</p></div><div class="approach-card"><h3>Cognitive</h3><strong>Mindfulness and thought-pattern awareness</strong><p>Exploring thinking, self-talk, attention, stress, and behaviour through mindfulness and CBT-informed approaches.</p></div><div class="approach-card"><h3>Relational</h3><strong>Emotion-focused and relationship-centered therapy</strong><p>Therapy grounded in authenticity, emotional awareness, attachment, connection, and meaningful human relationships.</p></div><div class="approach-card"><h3>Nature-Based</h3><strong>Movement, outdoor therapy, and connection to the natural world</strong><p>Integrating walk-and-talk therapy, outdoor environments, grounding, movement, and connection to land.</p></div><div class="approach-card"><h3>Trauma-Informed</h3><strong>Safety, pacing, and compassionate healing</strong><p>Creating therapy that prioritizes safety, capacity, collaboration, empowerment, and respect for each person’s experiences.</p></div></div></div></section>
-<section class="experiences" id="experiences"><div class="container"><div class="kicker">Therapy Experiences</div><div class="cards"><div class="card"><img src="hike_talk.jpg" alt=""><h3>Hike & Talk Therapy</h3><p>Walk alongside a therapist in nature and talk.</p><a href="#">Learn More →</a></div><div class="card"><img src="canoe_therapy.jpg" alt=""><h3>Canoe Therapy</h3><p>Find calm and perspective on the water.</p><a href="#">Learn More →</a></div><div class="card"><img src="reflection_growth.jpg" alt=""><h3>Reflection & Growth</h3><p>Time and space for insight, clarity, and integration.</p><a href="#">Learn More →</a></div><div class="card"><img src="group_experiences.jpg" alt=""><h3>Group Experiences</h3><p>Connect, share, and grow in a supportive community.</p><a href="#">Learn More →</a></div></div></div></section>
-<section class="cta"><div class="container"><h2>You don’t have to go through it alone.<br>Let’s take the next step, together.</h2><a class="btn outline" href="#contact">Book a Session</a></div></section>
-<footer class="footer" id="contact"><div class="container footer-grid"><div class="logo"><div class="logo-mark">♧</div><div class="logo-text"><strong>GAIA</strong><span>— MENTAL HEALTH —</span></div></div><p>Outdoor therapy in Ontario inspired by nature, grounded in evidence, and rooted in relationship.</p><div class="footer-links"><a href="#about">About</a><a href="#approach">Approach</a><a href="#therapy">Therapy</a><a href="#experiences">Experiences</a></div><div><p><strong>Follow Along</strong></p><div class="social"><span>◎</span><span>f</span><span>✉</span></div></div></div></footer>
+
+<!-- ── HEADER ──────────────────────────────────────────── -->
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#173525" stroke-width="1.2">
+          <circle cx="20" cy="20" r="10"/>
+          <path d="M20 10C20 10 16 15 16 20C16 25 20 28 20 28"/>
+          <path d="M20 10C20 10 24 15 24 20C24 25 20 28 20 28"/>
+          <path d="M10.5 16H29.5M10.5 24H29.5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <strong>GAIA</strong>
+        <span>— Mental Health —</span>
+      </div>
+    </a>
+    <nav class="menu">
+      <a href="about.html">About</a>
+      <a href="therapy.html">Therapy</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#experiences">Experiences</a>
+      <a href="resources.html">Resources</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="contact.html">Book a Session</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── HERO ────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <h1>Therapy <em>rooted</em><br>in nature and<br>connection.</h1>
+    <div class="rule"></div>
+    <p class="lead">Outdoor therapy for meaningful change and lasting well-being.</p>
+    <div class="hero-actions">
+      <a class="btn" href="contact.html">Book a Session</a>
+      <a class="btn ghost" href="therapy.html">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PILLARS ──────────────────────────────────────────── -->
+<section class="pillars">
+  <div class="container">
+    <div class="kicker">Nature · Connection · Change</div>
+    <div class="pillar-grid">
+
+      <div class="pillar reveal">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#173525" stroke-width="1.4">
+            <path d="M12 22V12M12 12C12 7 17 3 21 3C21 8 18 13 12 12Z M12 12C12 7 7 3 3 3C3 8 6 13 12 12Z"/>
+          </svg>
+        </div>
+        <h3>Rooted in Nature</h3>
+        <p>Therapy connected to the calming power of the outdoors.</p>
+      </div>
+
+      <div class="pillar reveal reveal-d1">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#173525" stroke-width="1.4">
+            <path d="M2 12c1.5-2 3-3 4.5-3s3 2 4.5 2 3-2 4.5-2 3 1.5 4.5 3"/>
+            <path d="M2 17c1.5-2 3-3 4.5-3s3 2 4.5 2 3-2 4.5-2 3 1.5 4.5 3"/>
+          </svg>
+        </div>
+        <h3>Somatic Support</h3>
+        <p>Reconnect with your body, emotions, and nervous system.</p>
+      </div>
+
+      <div class="pillar reveal reveal-d2">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#173525" stroke-width="1.4">
+            <circle cx="13" cy="5" r="1.5"/>
+            <path d="M9 10l2-2 2 1 1 3M9 10l-2 5 2 1M13 14l1 4-2 1"/>
+          </svg>
+        </div>
+        <h3>Walk &amp; Talk</h3>
+        <p>Move, breathe, reflect, and heal in natural spaces.</p>
+      </div>
+
+      <div class="pillar reveal reveal-d3">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#173525" stroke-width="1.4">
+            <path d="M12 22v-8M12 14c0-4 3-8 7-10M12 14c0-4-3-8-7-10"/>
+          </svg>
+        </div>
+        <h3>Lasting Growth</h3>
+        <p>Build resilience, clarity, and healthier ways to cope.</p>
+      </div>
+
+      <div class="pillar reveal reveal-d4">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#173525" stroke-width="1.4">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <h3>Human Approach</h3>
+        <p>A supportive space where you feel heard and understood.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SPLIT / ABOUT ────────────────────────────────────── -->
+<section class="split" id="about">
+  <div class="split-img"></div>
+  <div class="split-content">
+    <span class="eyebrow">Our Approach</span>
+    <h2>Evidence-informed.<br><em>Nature-inspired.</em><br>Person-centred.</h2>
+    <p>Gaia Mental Health approaches psychotherapy through a relational, trauma-informed, somatic, cognitive, and nature-based lens — with deep respect for each person's unique story.</p>
+    <a class="btn ghost" href="about.html">Learn More About Us</a>
+  </div>
+</section>
+
+<!-- ── APPROACH ─────────────────────────────────────────── -->
+<section class="approach" id="approach">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">The Approach</span>
+      <h2>Support for the <em>whole</em> person.</h2>
+      <p>Healing involves more than changing thoughts — it means restoring safety, regulation, connection, embodiment, and relationship.</p>
+    </div>
+    <div class="approach-grid">
+
+      <div class="approach-card reveal">
+        <div class="approach-num">01</div>
+        <h3>Somatic</h3>
+        <strong>Body-based &amp; nervous system-focused</strong>
+        <p>Supporting grounding, embodiment, nervous system regulation, and awareness of the mind–body connection.</p>
+      </div>
+
+      <div class="approach-card reveal reveal-d1">
+        <div class="approach-num">02</div>
+        <h3>Cognitive</h3>
+        <strong>Mindfulness &amp; thought-pattern awareness</strong>
+        <p>Exploring thinking, self-talk, attention, stress, and behaviour through mindfulness and CBT-informed approaches.</p>
+      </div>
+
+      <div class="approach-card reveal reveal-d2">
+        <div class="approach-num">03</div>
+        <h3>Relational</h3>
+        <strong>Emotion-focused &amp; relationship-centred</strong>
+        <p>Therapy grounded in authenticity, emotional awareness, attachment, connection, and meaningful human relationships.</p>
+      </div>
+
+      <div class="approach-card reveal reveal-d3">
+        <div class="approach-num">04</div>
+        <h3>Nature-Based</h3>
+        <strong>Movement, outdoor therapy &amp; land connection</strong>
+        <p>Integrating walk-and-talk therapy, outdoor environments, grounding, movement, and connection to the natural world.</p>
+      </div>
+
+      <div class="approach-card reveal reveal-d4">
+        <div class="approach-num">05</div>
+        <h3>Trauma-Informed</h3>
+        <strong>Safety, pacing &amp; compassionate healing</strong>
+        <p>Creating therapy that prioritizes safety, capacity, collaboration, empowerment, and respect for each person's experiences.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCES ──────────────────────────────────────── -->
+<section class="experiences" id="experiences">
+  <div class="container">
+    <div class="kicker">Therapy Experiences</div>
+    <div class="cards">
+
+      <div class="card reveal">
+        <div style="overflow:hidden">
+          <img class="card-img" src="hike_talk.jpg" alt="Hike and Talk Therapy">
+        </div>
+        <div class="card-body">
+          <h3>Hike &amp; Talk Therapy</h3>
+          <p>Walk alongside a therapist in nature, move your body, and let the landscape hold the conversation.</p>
+          <a class="card-link" href="therapy.html">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d1">
+        <div style="overflow:hidden">
+          <img class="card-img" src="canoe_therapy.jpg" alt="Canoe Therapy">
+        </div>
+        <div class="card-body">
+          <h3>Canoe Therapy</h3>
+          <p>Find calm and perspective on the water in a peaceful, contained therapeutic space.</p>
+          <a class="card-link" href="therapy.html">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d2">
+        <div style="overflow:hidden">
+          <img class="card-img" src="reflection_growth.jpg" alt="Reflection and Growth">
+        </div>
+        <div class="card-body">
+          <h3>Reflection &amp; Growth</h3>
+          <p>Time and space for insight, clarity, and integration in a supportive therapeutic relationship.</p>
+          <a class="card-link" href="therapy.html">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d3">
+        <div style="overflow:hidden">
+          <img class="card-img" src="group_experiences.jpg" alt="Group Experiences">
+        </div>
+        <div class="card-body">
+          <h3>Group Experiences</h3>
+          <p>Connect, share, and grow in a carefully held community of shared healing.</p>
+          <a class="card-link" href="therapy.html">Learn More →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ──────────────────────────────────────────────── -->
+<section class="cta">
+  <div class="container">
+    <h2>You don't have to go through it alone.<br><em>Let's take the next step, together.</em></h2>
+    <a class="btn outline" href="contact.html">Book a Session</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          <div class="logo-mark">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#173525" stroke-width="1.2">
+              <circle cx="20" cy="20" r="10"/>
+              <path d="M20 10C20 10 16 15 16 20C16 25 20 28 20 28"/>
+              <path d="M20 10C20 10 24 15 24 20C24 25 20 28 20 28"/>
+              <path d="M10.5 16H29.5M10.5 24H29.5"/>
+            </svg>
+          </div>
+          <div class="logo-text"><strong>GAIA</strong><span>— Mental Health —</span></div>
+        </a>
+        <p>Outdoor therapy in Ontario, inspired by nature, grounded in evidence, and rooted in relationship.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="therapy.html">Therapy Services</a>
+          <a href="index.html#approach">Our Approach</a>
+          <a href="index.html#experiences">Experiences</a>
+          <a href="resources.html">Resources</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Contact</h4>
+        <p>Ontario, Canada</p>
+        <p>hello@gaiahealth.ca</p>
+        <p>(647) 000-0000</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Along</h4>
+        <div class="social">
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Facebook">fb</a>
+          <a href="#" aria-label="Email">✉</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Gaia Mental Health. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
 </body>
 </html>
